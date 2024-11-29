@@ -1,0 +1,31 @@
+name: Update Notion Database
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Esegue il workflow ogni 5 minuti
+  workflow_dispatch:  # Permette di eseguire il workflow manualmente
+
+jobs:
+  update-notion:
+    runs-on: ubuntu-latest
+
+steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specifica la versione di Python che desideri utilizzare
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run Python script
+      env:
+        NOTION_TOKEN: ${{ secrets.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 }}
+        DATABASE_ID: ${{ secrets.14b513ef-1961-80a8-8d60-c4437bc114b0 }}
+      run: |
+        python update_notion.py
