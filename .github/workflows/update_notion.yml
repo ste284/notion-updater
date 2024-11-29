@@ -25,7 +25,7 @@ steps:
 
     - name: Run Python script
       env:
-        NOTION_TOKEN: ${{ secrets.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 }}
-        DATABASE_ID: ${{ secrets.14b513ef-1961-80a8-8d60-c4437bc114b0 }}
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        DATABASE_ID: ${{ secrets.DATABASE_ID }}
       run: |
         python update_notion.py
